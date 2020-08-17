@@ -644,7 +644,7 @@
       "output": {
         "text": {
           "values": [
-            "¿ XXX Cuál operación desea que hagamos? Crear uno nuevo, modficar el existente o borrarlo"
+            "¿ Cuál operación desea que hagamos? Crear uno nuevo, modificar el existente o borrarlo"
           ],
           "selection_policy": "sequential"
         }
@@ -734,7 +734,7 @@
       "output": {
         "text": {
           "values": [
-            "¿YYYY Cuál es la aplicación en la cual quiere realizar la operación?"
+            "¿ Cuál es la aplicación en la cual quiere realizar la operación?"
           ],
           "selection_policy": "sequential"
         }
@@ -762,7 +762,7 @@
           {
             "values": [
               {
-                "text": "Estas creando una solicitud para <? $request ?> en el <? $application ?>.  Tu número de reporte es:<?new Random().nextInt(1000)?>. <? context.clear() ?>. \n¿Deseas tener acceso al reporte?"
+                "text": "Estas creando una solicitud para <? $request ?> en el <? $application ?>.  Tu número de reporte es:<?new Random().nextInt(1000)?>.  \n¿Deseas tener acceso al reporte?"
               }
             ],
             "response_type": "text",
