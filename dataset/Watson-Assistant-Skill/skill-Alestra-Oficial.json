@@ -7,6 +7,9 @@
           "text": "SAP no responde"
         },
         {
+          "text": "login email"
+        },
+        {
           "text": "con la clave"
         },
         {
@@ -84,7 +87,7 @@
       "intent": "Saludo",
       "examples": [
         {
-          "text": "Buenos días, podemos empezar la conversación?"
+          "text": "Hey, ¿cómo te va?"
         },
         {
           "text": "como estas"
@@ -159,7 +162,7 @@
           "text": "Buenas noches."
         },
         {
-          "text": "Hey, ¿cómo te va?"
+          "text": "Buenos días, podemos empezar la conversación?"
         },
         {
           "text": "Hola ¿puedes ayudarme?"
@@ -206,9 +209,6 @@
           "text": "Quiero una nueva cuenta de correo"
         },
         {
-          "text": "No puedo entrar a la seccion de nomina en el portal"
-        },
-        {
           "text": "Pueden eliminar al usuario xyz"
         },
         {
@@ -240,18 +240,15 @@
         },
         {
           "text": "Quiero que me den de alta un usuario en SAP"
+        },
+        {
+          "text": "No puedo entrar a la seccion de nomina en el portal"
         }
       ]
     },
     {
       "intent": "Adios",
       "examples": [
-        {
-          "text": "Fue agradable hablar contigo."
-        },
-        {
-          "text": "Eso ha sido todo lo que me hacía falta."
-        },
         {
           "text": "Cuídate!"
         },
@@ -283,10 +280,13 @@
           "text": "hasta luego"
         },
         {
+          "text": "Gracias por tu ayuda, hasta luego."
+        },
+        {
           "text": "Gracias no necesito más ayuda."
         },
         {
-          "text": "Gracias por tu ayuda, hasta luego."
+          "text": "Fue agradable hablar contigo."
         },
         {
           "text": "Gracias, podemos cerrar esta conversación."
@@ -320,6 +320,9 @@
         },
         {
           "text": "no tengo mas tiempo"
+        },
+        {
+          "text": "Eso ha sido todo lo que me hacía falta."
         }
       ]
     }
@@ -330,22 +333,25 @@
       "values": [
         {
           "type": "synonyms",
-          "value": "add",
-          "synonyms": [
-            "añadir",
-            "nuevo",
-            "alta",
-            "agregar"
-          ]
-        },
-        {
-          "type": "synonyms",
           "value": "delete",
           "synonyms": [
             "quitar",
             "destruir",
             "eliminar",
-            "borrar"
+            "borrar",
+            "suprimir",
+            "borrarlo"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "add",
+          "synonyms": [
+            "añadir",
+            "nuevo",
+            "alta",
+            "agregar",
+            "nueva"
           ]
         },
         {
@@ -362,6 +368,17 @@
     {
       "entity": "problem",
       "values": [
+        {
+          "type": "synonyms",
+          "value": "licencia",
+          "synonyms": [
+            "activation key",
+            "licence key",
+            "licencia no es valida",
+            "licencia vencida",
+            "licencia expiro"
+          ]
+        },
         {
           "type": "synonyms",
           "value": "login",
@@ -386,17 +403,6 @@
         },
         {
           "type": "synonyms",
-          "value": "licencia",
-          "synonyms": [
-            "activation key",
-            "licence key",
-            "licencia no es valida",
-            "licencia vencida",
-            "licencia expiro"
-          ]
-        },
-        {
-          "type": "synonyms",
           "value": "crash",
           "synonyms": [
             "no abre la aplicacion",
@@ -416,21 +422,21 @@
       "values": [
         {
           "type": "synonyms",
+          "value": "Si",
+          "synonyms": [
+            "claro",
+            "si",
+            "ok"
+          ]
+        },
+        {
+          "type": "synonyms",
           "value": "No",
           "synonyms": [
             "no",
             "jamas",
             "ni pensarlo",
             "estas loco"
-          ]
-        },
-        {
-          "type": "synonyms",
-          "value": "Si",
-          "synonyms": [
-            "claro",
-            "si",
-            "ok"
           ]
         }
       ]
@@ -440,10 +446,11 @@
       "values": [
         {
           "type": "synonyms",
-          "value": "email",
+          "value": "Portal",
           "synonyms": [
-            "outlook",
-            "correo"
+            "portal interno",
+            "intranet",
+            "portal de empleados"
           ]
         },
         {
@@ -457,17 +464,16 @@
         },
         {
           "type": "synonyms",
-          "value": "SAP",
-          "synonyms": []
+          "value": "email",
+          "synonyms": [
+            "outlook",
+            "correo"
+          ]
         },
         {
           "type": "synonyms",
-          "value": "Portal",
-          "synonyms": [
-            "portal interno",
-            "intranet",
-            "portal de empleados"
-          ]
+          "value": "Siebel",
+          "synonyms": []
         },
         {
           "type": "synonyms",
@@ -487,7 +493,7 @@
         },
         {
           "type": "synonyms",
-          "value": "Siebel",
+          "value": "SAP",
           "synonyms": []
         }
       ]
@@ -526,6 +532,32 @@
       "conditions": "@problem",
       "event_name": "input",
       "dialog_node": "handler_3_1596837532527"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "¿ Cuál operación desea que hagamos? Crear uno nuevo, modificar el existente o borrarlo"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1597616580909",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1597616580917",
+      "previous_sibling": "handler_10_1597616580917"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_10_1597616580909",
+      "context": {
+        "r1": "@request"
+      },
+      "conditions": "@request",
+      "event_name": "input",
+      "dialog_node": "handler_10_1597616580917"
     },
     {
       "type": "slot",
@@ -640,32 +672,6 @@
       "dialog_node": "handler_2_1596837502931"
     },
     {
-      "type": "event_handler",
-      "output": {
-        "text": {
-          "values": [
-            "¿ Cuál operación desea que hagamos? Crear uno nuevo, modificar el existente o borrarlo"
-          ],
-          "selection_policy": "sequential"
-        }
-      },
-      "parent": "slot_10_1597616580909",
-      "event_name": "focus",
-      "dialog_node": "handler_9_1597616580917",
-      "previous_sibling": "handler_10_1597616580917"
-    },
-    {
-      "type": "event_handler",
-      "output": {},
-      "parent": "slot_10_1597616580909",
-      "context": {
-        "request": "@request"
-      },
-      "conditions": "@request",
-      "event_name": "input",
-      "dialog_node": "handler_10_1597616580917"
-    },
-    {
       "type": "response_condition",
       "output": {
         "generic": [
@@ -709,14 +715,15 @@
       "parent": "node_3_1597616534537",
       "variable": "$application",
       "dialog_node": "slot_1_1597616966810",
-      "previous_sibling": "slot_10_1597616580909"
+      "previous_sibling": "node_2_1597625203184"
     },
     {
       "type": "slot",
+      "output": {},
       "parent": "node_3_1597616534537",
-      "variable": "$request",
+      "variable": "$r1",
       "dialog_node": "slot_10_1597616580909",
-      "previous_sibling": "node_2_1597625203184"
+      "previous_sibling": "slot_1_1597616966810"
     },
     {
       "type": "standard",
@@ -762,7 +769,7 @@
           {
             "values": [
               {
-                "text": "Estas creando una solicitud para <? $request ?> en el <? $application ?>.  Tu número de reporte es:<?new Random().nextInt(1000)?>.  \n¿Deseas tener acceso al reporte?"
+                "text": "Estas creando una solicitud para <? $r1 ?> en el <? $application ?>.  Tu número de reporte es:<?new Random().nextInt(1000)?>.  \n¿Deseas tener acceso al reporte?"
               }
             ],
             "response_type": "text",
